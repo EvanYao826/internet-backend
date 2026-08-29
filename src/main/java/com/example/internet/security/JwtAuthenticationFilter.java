@@ -24,6 +24,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private static final String BEARER_PREFIX = "Bearer ";
 
     private final JwtUtils jwtUtils;
+    private final TokenBlacklist tokenBlacklist;
     private final CustomUserDetailsService userDetailsService;
 
     @Override
@@ -33,7 +34,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (header != null && header.startsWith(BEARER_PREFIX)
                 && SecurityContextHolder.getContext().getAuthentication() == null) {
             String token = header.substring(BEARER_PREFIX.length());
-            if (jwtUtils.validate(token)) {
+            if (jwtUtils.validate(token) && !tokenBlacklist.isRevoked(token)) {
                 var claims = jwtUtils.parseToken(token);
                 Long userId = jwtUtils.getUserId(claims);
                 if (userId != null) {
