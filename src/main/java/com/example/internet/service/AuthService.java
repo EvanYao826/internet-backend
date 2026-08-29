@@ -100,14 +100,4 @@ public class AuthService {
                 .createTime(user.getCreateTime())
                 .build();
     }
-
-    public void requireUserExists(Long userId) {
-        if (userMapper.selectById(userId) == null) {
-            throw new BizException(ResultCode.NOT_FOUND, "用户不存在");
-        }
-    }
-
-    public Date getTokenExpiry(String token) {
-        return jwtUtils.parseToken(token).getExpiration();
-    }
 }

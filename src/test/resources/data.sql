@@ -14,7 +14,18 @@ INSERT INTO sys_menu (id, parent_id, menu_name, menu_type, path, component, icon
 (10, 0,  '系统管理', 1, '/system',      NULL,                'system',    NULL,               2, 1, 1),
 (11, 10, '用户管理', 2, '/system/user', 'system/user/index', 'user',      'system:user:view', 1, 1, 1),
 (12, 10, '角色管理', 2, '/system/role', 'system/role/index', 'role',      'system:role:view', 2, 1, 1),
-(111, 11, '用户新增', 3, NULL, NULL, NULL, 'system:user:add', 1, 1, 1);
+(13, 10, '菜单管理', 2, '/system/menu', 'system/menu/index', 'menu',      'system:menu:view', 3, 1, 1),
+(111, 11, '用户新增',     3, NULL, NULL, NULL, 'system:user:add',           1, 1, 1),
+(112, 11, '用户修改',     3, NULL, NULL, NULL, 'system:user:edit',          2, 1, 1),
+(113, 11, '用户删除',     3, NULL, NULL, NULL, 'system:user:delete',        3, 1, 1),
+(114, 11, '用户重置密码', 3, NULL, NULL, NULL, 'system:user:resetPassword', 4, 1, 1),
+(121, 12, '角色新增',     3, NULL, NULL, NULL, 'system:role:add',           1, 1, 1),
+(122, 12, '角色修改',     3, NULL, NULL, NULL, 'system:role:edit',          2, 1, 1),
+(123, 12, '角色删除',     3, NULL, NULL, NULL, 'system:role:delete',        3, 1, 1),
+(124, 12, '角色授权',     3, NULL, NULL, NULL, 'system:role:assign',        4, 1, 1),
+(131, 13, '菜单新增',     3, NULL, NULL, NULL, 'system:menu:add',           1, 1, 1),
+(132, 13, '菜单修改',     3, NULL, NULL, NULL, 'system:menu:edit',          2, 1, 1),
+(133, 13, '菜单删除',     3, NULL, NULL, NULL, 'system:menu:delete',        3, 1, 1);
 
 INSERT INTO sys_user_role (user_id, role_id) VALUES (1, 1), (2, 2), (3, 2);
 
