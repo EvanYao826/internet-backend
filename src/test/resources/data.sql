@@ -15,6 +15,7 @@ INSERT INTO sys_menu (id, parent_id, menu_name, menu_type, path, component, icon
 (11, 10, '用户管理', 2, '/system/user', 'system/user/index', 'user',      'system:user:view', 1, 1, 1),
 (12, 10, '角色管理', 2, '/system/role', 'system/role/index', 'role',      'system:role:view', 2, 1, 1),
 (13, 10, '菜单管理', 2, '/system/menu', 'system/menu/index', 'menu',      'system:menu:view', 3, 1, 1),
+(20, 0,  '个人中心', 2, '/profile',     'profile/index',     'profile',   NULL,               3, 1, 0),
 (111, 11, '用户新增',     3, NULL, NULL, NULL, 'system:user:add',           1, 1, 1),
 (112, 11, '用户修改',     3, NULL, NULL, NULL, 'system:user:edit',          2, 1, 1),
 (113, 11, '用户删除',     3, NULL, NULL, NULL, 'system:user:delete',        3, 1, 1),

@@ -29,7 +29,10 @@ public class JwtUtils {
     public String generateToken(Long userId, String username) {
         Date now = new Date();
         Date expiry = new Date(now.getTime() + properties.getExpireMinutes() * 60 * 1000);
+        // jti 保证同一秒内签发的 Token 也不相同：
+        // JWT 时间声明为秒级精度，否则退出后立刻重新登录会得到与黑名单中相同的 Token
         return Jwts.builder()
+                .id(java.util.UUID.randomUUID().toString())
                 .subject(username)
                 .claim(CLAIM_UID, userId)
                 .issuedAt(now)

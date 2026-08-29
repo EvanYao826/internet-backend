@@ -131,12 +131,14 @@ class RoleControllerTest {
 
     @Test
     @Order(6)
-    @DisplayName("查询角色已分配菜单：operator 为 [1,10,11]，不存在角色 404")
+    @DisplayName("查询角色已分配菜单：operator 含基础菜单，不存在角色 404")
     void getMenuIds() throws Exception {
+        // 不校验具体长度：其他测试类可能对 operator 角色做过授权
         mockMvc.perform(get("/system/roles/2/menus")
                         .header("Authorization", "Bearer " + adminToken))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data.length()").value(3));
+                .andExpect(jsonPath("$.data").value(
+                        org.hamcrest.Matchers.hasItems(1, 10, 11)));
 
         mockMvc.perform(get("/system/roles/9999/menus")
                         .header("Authorization", "Bearer " + adminToken))
