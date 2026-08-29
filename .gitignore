@@ -1,0 +1,20 @@
+# Compiled
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+out/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local secrets
+application-local.yml
